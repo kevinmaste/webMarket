@@ -1,12 +1,12 @@
 import React from 'react';
 import NavBar from "./components/navBar/navBar";
-import BodyContent from "./components/container/bodyContainer";
+import Home from "./components/containerIcontent/Home";
 
 function App() {
   return (
     <div >
         <NavBar/>
-        <BodyContent/>
+        <Home/>
     </div>
   );
 }
