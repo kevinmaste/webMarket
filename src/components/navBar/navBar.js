@@ -1,36 +1,70 @@
-import React, {useState} from "react";
+import React from "react";
 import AppBar from '@material-ui/core/AppBar';
-import {Badge, Button, IconButton, Toolbar, Typography} from "@material-ui/core";
+import {Avatar, Badge, Button, IconButton, Toolbar, Typography} from "@material-ui/core";
 import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import {auth,provider} from "../../firebase";
+import {signOut,setActiveAccount} from "../../features/user/userSlice";
+import {currentSelector,usernameSelector,pictureSelector} from "../../features/user/userSlice";
+import {useDispatch,useSelector} from "react-redux";
+import {useStyles} from "./navStyles";
+import firebase from "firebase";
 
 const NavBar=()=>{
     //We can set the auth with firebase after
-    const [Up,setUp]= useState(false)
+    const dispatch = useDispatch();
+    const username = useSelector(usernameSelector)
+    const picture = useSelector(pictureSelector)
+    const current = useSelector(currentSelector)
+
+
+    const  handleLogin=()=> {
+        auth.signInWithPopup(provider)
+            .then((response) =>{
+                dispatch(setActiveAccount({
+                    username: response.user.displayName,
+                    email: response.user.email,
+                    picture: response.user.photoURL
+                }))
+            })
+    }
+    const handleLogout=()=> {
+        auth.signOut()
+            .then(()=>dispatch(
+                signOut()
+            )).catch((error) =>console.log(error.message))
+    }
+
+    const classes =useStyles();
     return(
         <>
-            <AppBar>
+            <AppBar className={classes.appColor}>
                 <Toolbar>
-                    <Typography variant="inherit">
+                    <Typography variant="inherit" color="primary" className={classes.logoText}>
                         CedCommerce
                     </Typography>
                     {/* test for display the bouton when you are connecting*/}
-                    {!Up &&
-                    <Button color="inherit">
-                        Login
-                    </Button>
-                    }
-                    {Up &&
-                        <div>
-                            <IconButton>
-                                <Badge badgeContent={1} color='secondary'>
-                                    <ShoppingCartOutlinedIcon/>
-                                </Badge>
-                            </IconButton>
-                            <Button color="inherit">
-                                Logout
+                    {current ? (
+                            <div className={classes.root}>
+                                <IconButton>
+                                    <Badge badgeContent={1} color='secondary'>
+                                        <ShoppingCartOutlinedIcon/>
+                                    </Badge>
+                                </IconButton>
+                                <Button color="inherit" className={classes.colorT}onClick={handleLogout}>
+                                    Logout
+                                </Button>
+                                <Avatar alt={username} src={picture} className={classes.avatarSize}>
+                                    {!picture && username.slice(0,3)}
+                                </Avatar>
+
+                            </div>
+                        ): (
+                            <Button color="inherit" onClick={handleLogin}>
+                                Login
                             </Button>
-                        </div>
+                        )
                     }
+
                 </Toolbar>
             </AppBar>
         </>
