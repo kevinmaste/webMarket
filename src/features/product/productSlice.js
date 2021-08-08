@@ -4,6 +4,7 @@ import axios from "axios";
 export const initialState ={
     loading: false,
     product:[],
+    cartItems:[],
 }
 
 export const productSlice = createSlice({
@@ -16,15 +17,20 @@ export const productSlice = createSlice({
         getProductSuccess:(state, action) => {
           state.product = action.payload
           state.loading=false
+        },
+        cartProduct:(state, action) => {
+            state.cartItems = action.payload
+            state.loading=false
         }
 
     }
 })
 
-export const {getProduct,getProductSuccess} = productSlice.actions
+export const {getProduct,getProductSuccess,cartProduct} = productSlice.actions
 
 //selector
 export const productsSelector = state=> state.product
+export const cartItemsSelector = state=> state.cartItems
 
 //reducer
 export default productSlice.reducer;
@@ -43,17 +49,18 @@ export function fetchProduct(){
     }
 }
 
-/*export function getCartByUser(){
+//cart in the product
+export function getCartByUser(id){
     return async dispatch =>{
-        dispatch()
-
+        dispatch(getProduct())
         try{
-            const res = await axios.get(`https://fakestoreapi.com/carts/`)
+            const res = await axios.get(`https://fakestoreapi.com/carts/${id}`)
+            dispatch(cartProduct(res.data))
         }catch (e) {
-
+            console.log(e.message)
         }
     }
-}*/
+}
 
 
 

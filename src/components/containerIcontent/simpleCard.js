@@ -8,7 +8,6 @@ import {setUserCart,cartSelector} from "../../features/user/userSlice";
 const SimpleCard = ({id,products}) => {
     const dispatch = useDispatch()
     const carts =useSelector(cartSelector)
-    console.log(carts[0])
     const  arr = []
     const classes = useStyles();
     const sendToCart=()=> {
