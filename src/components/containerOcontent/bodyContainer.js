@@ -2,6 +2,7 @@ import React from "react";
 import {Avatar, Grid, Typography} from "@material-ui/core";
 import {Animated} from "react-animated-css";
 import {useStyles} from "./contentOStyle";
+import video from "../../asset/Desperate.webm"
 
 const BodyContent = () => {
     const classes = useStyles();
@@ -41,7 +42,7 @@ const BodyContent = () => {
                           <Grid item xs={12}>
                               <div className={classes.videoposition}>
                                   <video controls>
-                                      <source src='../../asset/videoplayback.mp4' type="video/mp4"/>
+                                      <source src={video} type="video/webm"/>
                                   </video>
                               </div>
                           </Grid>

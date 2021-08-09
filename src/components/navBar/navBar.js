@@ -5,9 +5,11 @@ import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
 import {auth,provider} from "../../firebase";
 import {signOut,setActiveAccount} from "../../features/user/userSlice";
 import {currentSelector,usernameSelector,pictureSelector} from "../../features/user/userSlice";
+import {cartSelector} from "../../features/user/userSlice";
 import {useDispatch,useSelector} from "react-redux";
 import {useStyles} from "./navStyles";
 import firebase from "firebase";
+import {Link} from "react-router-dom";
 
 const NavBar=()=>{
     //We can set the auth with firebase after
@@ -15,8 +17,8 @@ const NavBar=()=>{
     const username = useSelector(usernameSelector)
     const picture = useSelector(pictureSelector)
     const current = useSelector(currentSelector)
-
-
+    //i use it because of the badge
+    const cartLenght = useSelector(cartSelector)
     const  handleLogin=()=> {
         auth.signInWithPopup(provider)
             .then((response) =>{
@@ -34,6 +36,7 @@ const NavBar=()=>{
             )).catch((error) =>console.log(error.message))
     }
 
+
     const classes =useStyles();
     return(
         <>
@@ -45,12 +48,14 @@ const NavBar=()=>{
                     {/* test for display the bouton when you are connecting*/}
                     {current ? (
                             <div className={classes.root}>
-                                <IconButton>
-                                    <Badge badgeContent={1} color='secondary'>
-                                        <ShoppingCartOutlinedIcon/>
-                                    </Badge>
-                                </IconButton>
-                                <Button color="inherit" className={classes.colorT}onClick={handleLogout}>
+                                <Link to='/cart'>
+                                    <IconButton>
+                                        <Badge badgeContent={cartLenght.length} color='secondary'>
+                                            <ShoppingCartOutlinedIcon/>
+                                        </Badge>
+                                    </IconButton>
+                                </Link>
+                                <Button color="inherit" className={classes.colorT} onClick={handleLogout}>
                                     Logout
                                 </Button>
                                 <Avatar alt={username} src={picture} className={classes.avatarSize}>
