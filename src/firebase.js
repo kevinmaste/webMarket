@@ -1,12 +1,13 @@
 import firebase from "firebase";
 
+//put your firebaseConfig here
 const firebaseConfig = {
-    apiKey: "AIzaSyBJL1Wa0DvlfgBJOdfwLoH3N6yiIvpBYf4",
-    authDomain: "ced-web-b05c5.firebaseapp.com",
-    projectId: "ced-web-b05c5",
-    storageBucket: "ced-web-b05c5.appspot.com",
-    messagingSenderId: "287062717017",
-    appId: "1:287062717017:web:7ffb224d30eb9fd08a7748"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: ""
 };
 //for initialize app
 const firebaseApp = firebase.initializeApp(firebaseConfig)
