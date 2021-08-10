@@ -1,6 +1,4 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
- 
-
 
 
 ## Available Scripts
@@ -40,9 +38,24 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-**The View
-![image](https://user-images.githubusercontent.com/79856740/128602873-18c8c754-f0a9-43c6-b0de-4166f55172e4.png)
+## The View
 
+![img.png](img.png)
+![image](https://user-images.githubusercontent.com/79856740/128602873-18c8c754-f0a9-43c6-b0de-4166f55172e4.png)
+![img_1.png](img_1.png)
+
+### `npm install @material-ui/core or yarn add @material-ui/core`
+it's for installing the packages in your react projet 
+
+### packages
+npm install react-loader-spinner or yarn add react-loader-spinner for the loading spinner
+npm install --save react-router-dom or yarn add react-router-dom
+
+## About the project
+The job is not really done , but if you understand and want to continue or if you want just to know how i do it , go ahead 
+
+## What we missed in this learning (reactjs,redux,firebese) project
+We missed to persist data when the user is connected to the page and when we are in the cart if we go back to the '/' route that will not work because product fecthing in the page is not loading (an error occurred)
 
 ## Learn More
 

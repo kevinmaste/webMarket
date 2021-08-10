@@ -7,6 +7,7 @@ import {
     Link
 } from "react-router-dom";
 import Cart from "./pages/carts/cart";
+import Home from "./components/containerIcontent/Home"
 import GlobalCart from "./pages/carts/globalCart";
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/">
                 <Manage/>
+            </Route>
+            <Route path="/Home">
+                <Home/>
             </Route>
         </Switch>
     </Router>

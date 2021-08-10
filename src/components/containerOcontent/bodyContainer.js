@@ -31,7 +31,7 @@ const BodyContent = () => {
                                   Cedric Biloué Le perron
                               </Typography>
                               <Typography variant='body2' align="center">
-                                    Site E-commerce
+                                    Site E-commerce (vente privée)
                               </Typography>
                               <Typography variant='body1' align="center">
                                   Connectez vous et visité
