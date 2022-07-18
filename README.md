@@ -34,7 +34,7 @@ npm install --save react-router-dom or yarn add react-router-dom
 ## About the project
 The job is not really done , but if you understand and want to continue or if you want just to know how i do it , go ahead 
 
-## What we missed in this learning (reactjs,redux,firebese) project
+## What we missed in this learning (reactjs,redux,firebase) project
 We missed to persist data when the user is connected to the page and when we are in the cart if we go back to the '/' route that will not work because product fecthing in the page is not loading (an error occurred)
 
 
